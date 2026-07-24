@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output-node
+  template:
+    metadata:
+      labels:
+        app: log-output-node
+    spec:
+      containers:
+      - name: log-output-node
+        image: docker.io/johnd0es/log-output-node:1.0
+        imagePullPolicy: Always
