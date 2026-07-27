@@ -1,0 +1,8 @@
+FROM node:22-slim
+
+WORKDIR /app
+COPY pingpong.js .
+
+ENV PORT=3000
+
+CMD ["node", "pingpong.js"]
