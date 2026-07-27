@@ -9,3 +9,4 @@
 - [1.3.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.3)
 - [1.4.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.4)
 - [1.5.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.5)
+- [1.6.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.6)
