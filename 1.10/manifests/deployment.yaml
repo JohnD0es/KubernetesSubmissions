@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-app
+  template:
+    metadata:
+      labels:
+        app: log-app
+    spec:
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
+      containers:
+        - name: log-writer
+          image: docker.io/johnd0es/log-writer:1.5
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
+
+        - name: log-reader
+          image: docker.io/johnd0es/log-reader:1.5
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
