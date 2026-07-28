@@ -1,0 +1,52 @@
+const fs = require("fs");
+const http = require("http");
+const { getImage } = require("./image-cache");
+
+function generateRandomString(length = 16) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+const RANDOM = generateRandomString();
+const COUNTER_PATH = "/usr/src/app/data/pingpong.txt";
+
+function readCounter() {
+  try {
+    return fs.readFileSync(COUNTER_PATH, "utf8").trim();
+  } catch {
+    return "0";
+  }
+}
+
+const server = http.createServer(async (req, res) => {
+  if (req.url === "/status") {
+    const ts = new Date().toISOString();
+    const count = readCounter();
+
+    const imagePath = await getImage();
+    const image = fs.readFileSync(imagePath);
+    const base64 = image.toString("base64");
+
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(`
+      <html>
+        <body>
+          <h3>${ts}: ${RANDOM}</h3>
+          <h4>Ping / Pongs: ${count}</h4>
+          <img src="data:image/jpeg;base64,${base64}" />
+        </body>
+      </html>
+    `);
+  } else {
+    res.writeHead(404);
+    res.end("Not found");
+  }
+});
+
+server.listen(3000, '0.0.0.0' () => {
+  console.log("Logoutput running on port 3000");
+});

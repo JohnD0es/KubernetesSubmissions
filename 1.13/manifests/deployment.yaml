@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logoutput
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logoutput
+  template:
+    metadata:
+      labels:
+        app: logoutput
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k3d-k3s-agent-0
+      volumes:
+        - name: shared-volume
+          persistentVolumeClaim:
+            claimName: shared-claim
+      containers:
+        - name: logoutput
+          image: johnd0es/logoutput:1.15
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "256Mi"
+            requests:
+              memory: "128Mi"
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /usr/src/app/data

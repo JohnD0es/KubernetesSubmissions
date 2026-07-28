@@ -1,0 +1,9 @@
+FROM node:20-slim
+WORKDIR /app
+
+COPY logoutput.js .
+COPY image-cache.js .
+
+RUN mkdir -p /usr/src/app/data
+
+CMD ["node", "logoutput.js"]
