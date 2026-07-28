@@ -18,7 +18,7 @@ spec:
             claimName: shared-claim
       containers:
         - name: pingpong
-          image: johnd0es/pingpong:1.0
+          image: pingpong:1.1
           volumeMounts:
             - name: shared-volume
               mountPath: /usr/src/app/data
