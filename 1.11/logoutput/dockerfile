@@ -1,0 +1,8 @@
+FROM node:22-slim
+
+WORKDIR /app
+COPY logoutput.js .
+
+ENV PORT=3000
+
+CMD ["node", "logoutput.js"]

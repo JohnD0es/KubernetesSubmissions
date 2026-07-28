@@ -1,24 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: logreader
+  name: logoutput
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: logreader
+      app: logoutput
   template:
     metadata:
       labels:
-        app: logreader
+        app: logoutput
     spec:
       volumes:
         - name: shared-volume
           persistentVolumeClaim:
             claimName: shared-claim
       containers:
-        - name: logreader
-          image: johnd0es/logreader:1.6
+        - name: logoutput
+          image: johnd0es/logoutput:1.7
+          imagePullPolicy: Always
           volumeMounts:
             - name: shared-volume
               mountPath: /usr/src/app/data
+          ports:
+            - containerPort: 3000
