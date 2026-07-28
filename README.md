@@ -14,3 +14,4 @@
 - [1.8.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.8)
 - [1.9.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.9)
 - [1.10.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.10)
+- [1.11.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.11)
