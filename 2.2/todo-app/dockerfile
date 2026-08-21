@@ -1,0 +1,13 @@
+FROM node:20-slim
+
+WORKDIR /app
+
+COPY todo-app.js .
+COPY image-cache.js .
+
+# PV mountataan tähän polkuun
+RUN mkdir -p /usr/src/app/data
+
+EXPOSE 3000
+
+CMD ["node", "todo-app.js"]
