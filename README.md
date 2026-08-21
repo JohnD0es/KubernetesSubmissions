@@ -21,4 +21,4 @@
 
 ### Chapter 3
 
-- [1.1.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/1.1)
+- [2.1.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/2.1)
