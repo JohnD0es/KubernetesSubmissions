@@ -26,3 +26,4 @@
 - [2.3.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/2.3)
 - [2.4.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/2.4)
 - [2.5.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/2.5)
+- [2.5.](https://github.com/JohnD0es/KubernetesSubmissions/tree/main/2.5)
