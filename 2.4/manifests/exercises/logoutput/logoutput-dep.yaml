@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logoutput-dep
+  namespace: exercises
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logoutput
+  template:
+    metadata:
+      labels:
+        app: logoutput
+    spec:
+      containers:
+        - name: logoutput
+          image: docker.io/johnd0es/logoutput:2.1
+          env:
+            - name: PINGPONG_URL
+              value: "http://pingpong-svc:3000/pings"
+          ports:
+            - containerPort: 3000
