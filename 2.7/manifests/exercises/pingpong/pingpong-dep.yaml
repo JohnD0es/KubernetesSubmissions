@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pingpong-dep
+  name: pingpong
   namespace: exercises
 spec:
   replicas: 1
@@ -15,6 +15,12 @@ spec:
     spec:
       containers:
         - name: pingpong
-          image: docker.io/johnd0es/pingpong:2.1
+          image: docker.io/johnd0es/pingpong:3.0
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: pingpong-config
+                  key: DATABASE_URL
           ports:
             - containerPort: 3000
