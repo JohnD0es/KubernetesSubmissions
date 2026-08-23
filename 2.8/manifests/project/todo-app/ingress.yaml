@@ -3,9 +3,12 @@ kind: Ingress
 metadata:
   name: todo-ingress
   namespace: project
+  annotations:
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - http:
+    - host: todo.local
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -14,46 +17,11 @@ spec:
                 name: todo-app-svc
                 port:
                   number: 3000
-          - path: /image
-            pathType: Prefix
-            backend:
-              service:
-                name: todo-app-svc
-                port:
-                  number: 3000
-          - path: /todos
+
+          - path: /api
             pathType: Prefix
             backend:
               service:
                 name: todo-backend-svc
                 port:
-                  number: 3000
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: todo-ingress
-spec:
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: todo-app-svc
-                port:
-                  number: 3000
-          - path: /image
-            pathType: Prefix
-            backend:
-              service:
-                name: todo-app-svc
-                port:
-                  number: 3000
-          - path: /todos
-            pathType: Prefix
-            backend:
-              service:
-                name: todo-backend-svc
-                port:
-                  number: 3000
+                  number: 3001
