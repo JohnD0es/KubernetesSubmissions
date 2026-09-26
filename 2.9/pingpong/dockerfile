@@ -1,0 +1,9 @@
+FROM node:20-slim
+
+WORKDIR /app
+
+COPY pingpong.js .
+
+EXPOSE 3000
+
+CMD ["node", "pingpong.js"]
